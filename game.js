@@ -10,6 +10,10 @@ function onLoad() {
 	button = document.getElementById("button");
 	statText = document.getElementById("status");
 
+	start = new Audio('bip.ogg');
+	change = new Audio('bop.ogg');
+	press = new Audio('but.ogg');
+
 	resetGame();
 }
 
@@ -34,6 +38,8 @@ function startGame() {
 	let wait = Math.random() * maxTime + minTime;
 
 	timeout = setTimeout(startTimer, wait * 1000);
+
+	start.play();
 }
 
 function startTimer() {
@@ -42,6 +48,8 @@ function startTimer() {
 	button.onmousedown = stopTimer;
 
 	timerStart = performance.now();
+
+	change.play();
 }
 
 function stopTimer() {
@@ -49,10 +57,14 @@ function stopTimer() {
 
 	let timeDelta = performance.now() - timerStart;
 	statText.innerText = "Time: " + timeDelta.toString() + "ms";
+
+	press.play();
 }
 
 function tooEarly() {
 	resetGame();
 
 	statText.innerText = "Too early.";
+
+	press.play();
 }
