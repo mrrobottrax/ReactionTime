@@ -17,7 +17,7 @@ function resetGame() {
 	statText.innerText = "Press start.";
 	button.innerText = "START";
 
-	button.onclick = startGame;
+	button.onmousedown = startGame;
 
 	box.style.backgroundColor = "red";
 
@@ -29,7 +29,7 @@ function startGame() {
 	statText.innerText = "Wait for the square to go green.";
 	button.innerText = "PRESS";
 
-	button.onclick = tooEarly;
+	button.onmousedown = tooEarly;
 
 	let wait = Math.random() * maxTime + minTime;
 
@@ -39,7 +39,7 @@ function startGame() {
 function startTimer() {
 	box.style.backgroundColor = "green";
 
-	button.onclick = stopTimer;
+	button.onmousedown = stopTimer;
 
 	timerStart = performance.now();
 }
